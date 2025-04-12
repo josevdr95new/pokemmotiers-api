@@ -187,7 +187,7 @@ function handleMetadata() {
         count_ou: tiers.ou.length,
         count_uu: tiers.uu.length,
         count_nu: tiers.nu.length,
-        last_updated_date: fechaActualizacion
+        last_updated_date: "12/04/2025"
     };
     
     return new Response(JSON.stringify({
