@@ -7,7 +7,7 @@ const tiers = {
         { id: 250, name: "Ho-Oh", win_percentage: 0, usage_percentage: 0 },
         { id: 377, name: "Regirock", win_percentage: 0, usage_percentage: 0 },
         { id: 379, name: "Registeel", win_percentage: 0, usage_percentage: 0 },
-        { id: 492, name: "Shaymin", win_percentage: 0, usage_percentage: 0 },
+        { id: 492, name: "Shaymin (Sky Forme)", win_percentage: 0, usage_percentage: 0 },
         { id: 643, name: "Reshiram", win_percentage: 0, usage_percentage: 0 },
         { id: 644, name: "Zekrom", win_percentage: 0, usage_percentage: 0 }
     ].sort((a, b) => a.id - b.id),
