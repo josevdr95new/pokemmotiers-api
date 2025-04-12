@@ -1,0 +1,10 @@
+name = "pokemmotiers-api"
+compatibility_date = "2024-03-19"
+main = "worker.js"
+
+[dev]
+port = 8787
+
+[observability]
+enabled = true
+head_sampling_rate = 1 # optional. default = 1.
