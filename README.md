@@ -27,9 +27,9 @@ wrangler dev worker.js
 ```bash
 http://127.0.0.1:8787/Endpoint
 ```
-| Endpoint               | Description                                  |
-|------------------------|----------------------------------------------|
-| `GET /tiers`           | List all available tiers with Pokémon counts |
-| `GET /pokemon`         | Get all Pokémon across all tiers             |
-| `GET /pokemon/{tier}`  | Get Pokémon for specific tier (ou, uu, nu)   |
-| `GET /metadata`        | Get API metadata and statistics              |
+| Endpoint               | Description                                                   |
+|------------------------|---------------------------------------------------------------|
+| `GET /tiers`           | List all available tiers with Pokémon counts                  |
+| `GET /pokemon`         | Get all Pokémon across all tiers                              |
+| `GET /pokemon/{tier}`  | Get Pokémon for specific tier (ubers, ou, uu, nu, untiered)   |
+| `GET /metadata`        | Get API metadata and statistics                               |
