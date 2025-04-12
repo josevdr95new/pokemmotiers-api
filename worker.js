@@ -84,7 +84,8 @@ function handleTiers() {
 function handleAllPokemon() {
     const allPokemon = Object.entries(tiers).flatMap(([tier, data]) => 
         data.map(p => ({ ...p, tier: tier.toUpperCase() }))
-        .sort((a, b) => a.id - b.id);
+        .sort((a, b) => a.id - b.id)
+    );
     
     return new Response(JSON.stringify({
         count: allPokemon.length,
