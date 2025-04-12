@@ -1,86 +1,110 @@
-const fechaActualizacion = new Date().toISOString().split('T')[0];
+const fechaActualizacion = "2025/04/12"; 
 
 const tiers = {
+    ubers: [
+		{ id: 150, name: "Mewtwo", win_percentage: 0 },
+		{ id: 250, name: "Ho-Oh", win_percentage: 0 },
+		{ id: 377, name: "Regirock", win_percentage: 0 },
+		{ id: 379, name: "Registeel", win_percentage: 0 },
+		{ id: 492, name: "Shaymin", win_percentage: 0 },
+		{ id: 643, name: "Reshiram", win_percentage: 0 },
+		{ id: 644, name: "Zekrom", win_percentage: 0 }
+    ].sort((a, b) => a.id - b.id),
+    
     ou: [
-        { id: 94, nombre: "Gengar" }, { id: 110, nombre: "Weezing" },
-        { id: 113, nombre: "Chansey" }, { id: 121, nombre: "Starmie" },
-        { id: 130, nombre: "Gyarados" }, { id: 145, nombre: "Zapdos" },
-        { id: 149, nombre: "Dragonite" }, { id: 196, nombre: "Espeon" },
-        { id: 212, nombre: "Scizor" }, { id: 227, nombre: "Skarmory" },
-        { id: 230, nombre: "Kingdra" }, { id: 243, nombre: "Raikou" },
-        { id: 245, nombre: "Suicune" }, { id: 248, nombre: "Tyranitar" },
-        { id: 279, nombre: "Pelipper" }, { id: 286, nombre: "Breloom" },
-        { id: 342, nombre: "Crawdaunt" }, { id: 376, nombre: "Metagross" },
-        { id: 385, nombre: "Jirachi" }, { id: 392, nombre: "Infernape" },
-        { id: 395, nombre: "Empoleon" }, { id: 398, nombre: "Staraptor" },
-        { id: 423, nombre: "Gastrodon" }, { id: 437, nombre: "Bronzong" },
-        { id: 445, nombre: "Garchomp" }, { id: 448, nombre: "Lucario" },
-        { id: 461, nombre: "Weavile" }, { id: 462, nombre: "Magnezone" },
-        { id: 472, nombre: "Gliscor" }, { id: 473, nombre: "Mamoswine" },
-        { id: 479, nombre: "Rotom-Wash" }, { id: 485, nombre: "Heatran" },
-        { id: 497, nombre: "Serperior" }, { id: 530, nombre: "Excadrill" },
-        { id: 534, nombre: "Conkeldurr" }, { id: 555, nombre: "Darmanitan" },
-        { id: 579, nombre: "Reuniclus" }, { id: 591, nombre: "Amoonguss" },
-        { id: 593, nombre: "Jellicent" }, { id: 598, nombre: "Ferrothorn" },
-        { id: 609, nombre: "Chandelure" }, { id: 620, nombre: "Mienshao" },
-        { id: 635, nombre: "Hydreigon" }, { id: 637, nombre: "Volcarona" }
+        { id: 94, name: "Gengar", win_percentage: 0 }, { id: 110, name: "Weezing", win_percentage: 0 },
+        { id: 113, name: "Chansey", win_percentage: 0 }, { id: 121, name: "Starmie", win_percentage: 0 },
+        { id: 130, name: "Gyarados", win_percentage: 0 }, { id: 145, name: "Zapdos", win_percentage: 0 },
+        { id: 149, name: "Dragonite", win_percentage: 0 }, { id: 196, name: "Espeon", win_percentage: 0 },
+        { id: 212, name: "Scizor", win_percentage: 0 }, { id: 227, name: "Skarmory", win_percentage: 0 },
+        { id: 230, name: "Kingdra", win_percentage: 0 }, { id: 243, name: "Raikou", win_percentage: 0 },
+        { id: 245, name: "Suicune", win_percentage: 0 }, { id: 248, name: "Tyranitar", win_percentage: 0 },
+        { id: 279, name: "Pelipper", win_percentage: 0 }, { id: 286, name: "Breloom", win_percentage: 0 },
+        { id: 342, name: "Crawdaunt", win_percentage: 0 }, { id: 376, name: "Metagross", win_percentage: 0 },
+        { id: 385, name: "Jirachi", win_percentage: 0 }, { id: 392, name: "Infernape", win_percentage: 0 },
+        { id: 395, name: "Empoleon", win_percentage: 0 }, { id: 398, name: "Staraptor", win_percentage: 0 },
+        { id: 423, name: "Gastrodon", win_percentage: 0 }, { id: 437, name: "Bronzong", win_percentage: 0 },
+        { id: 445, name: "Garchomp", win_percentage: 0 }, { id: 448, name: "Lucario", win_percentage: 0 },
+        { id: 461, name: "Weavile", win_percentage: 0 }, { id: 462, name: "Magnezone", win_percentage: 0 },
+        { id: 472, name: "Gliscor", win_percentage: 0 }, { id: 473, name: "Mamoswine", win_percentage: 0 },
+        { id: 479, name: "Rotom-Wash", win_percentage: 0 }, { id: 485, name: "Heatran", win_percentage: 0 },
+        { id: 497, name: "Serperior", win_percentage: 0 }, { id: 530, name: "Excadrill", win_percentage: 0 },
+        { id: 534, name: "Conkeldurr", win_percentage: 0 }, { id: 555, name: "Darmanitan", win_percentage: 0 },
+        { id: 579, name: "Reuniclus", win_percentage: 0 }, { id: 591, name: "Amoonguss", win_percentage: 0 },
+        { id: 593, name: "Jellicent", win_percentage: 0 }, { id: 598, name: "Ferrothorn", win_percentage: 0 },
+        { id: 609, name: "Chandelure", win_percentage: 0 }, { id: 620, name: "Mienshao", win_percentage: 0 },
+        { id: 635, name: "Hydreigon", win_percentage: 0 }, { id: 637, name: "Volcarona", win_percentage: 0 }
     ].sort((a, b) => a.id - b.id),
     
     uu: [
-        { id: 3, nombre: "Venusaur" }, { id: 31, nombre: "Nidoqueen" },
-        { id: 34, nombre: "Nidoking" }, { id: 38, nombre: "Ninetales" },
-        { id: 55, nombre: "Golduck" }, { id: 62, nombre: "Poliwrath" },
-        { id: 68, nombre: "Machamp" }, { id: 73, nombre: "Tentacruel" },
-        { id: 80, nombre: "Slowbro" }, { id: 91, nombre: "Cloyster" },
-        { id: 134, nombre: "Vaporeon" }, { id: 135, nombre: "Jolteon" },
-        { id: 141, nombre: "Kabutops" }, { id: 143, nombre: "Snorlax" },
-        { id: 160, nombre: "Feraligatr" }, { id: 169, nombre: "Crobat" },
-        { id: 178, nombre: "Xatu" }, { id: 186, nombre: "Politoed" },
-        { id: 195, nombre: "Quagsire" }, { id: 197, nombre: "Umbreon" },
-        { id: 205, nombre: "Forretress" }, { id: 207, nombre: "Gligar" },
-        { id: 214, nombre: "Heracross" }, { id: 226, nombre: "Mantine" },
-        { id: 232, nombre: "Donphan" }, { id: 233, nombre: "Porygon2" },
-        { id: 242, nombre: "Blissey" }, { id: 244, nombre: "Entei" },
-        { id: 302, nombre: "Sableye" }, { id: 308, nombre: "Medicham" },
-        { id: 324, nombre: "Torkoal" }, { id: 330, nombre: "Flygon" },
-        { id: 373, nombre: "Salamence" }, { id: 407, nombre: "Roserade" },
-        { id: 424, nombre: "Ambipom" }, { id: 429, nombre: "Mismagius" },
-        { id: 450, nombre: "Hippowdon" }, { id: 464, nombre: "Rhyperior" },
-        { id: 465, nombre: "Tangrowth" }, { id: 468, nombre: "Togekiss" },
-        { id: 469, nombre: "Yanmega" }, { id: 474, nombre: "Porygon-Z" },
-        { id: 479, nombre: "Rotom" }, { id: 492, nombre: "Shaymin" },
-        { id: 526, nombre: "Gigalith" }, { id: 537, nombre: "Seismitoad" },
-        { id: 545, nombre: "Scolipede" }, { id: 553, nombre: "Krookodile" },
-        { id: 561, nombre: "Sigilyph" }, { id: 563, nombre: "Cofagrigus" },
-        { id: 612, nombre: "Haxorus" }, { id: 625, nombre: "Bisharp" },
-        { id: 630, nombre: "Mandibuzz" }
+        { id: 3, name: "Venusaur", win_percentage: 0 }, { id: 31, name: "Nidoqueen", win_percentage: 0 },
+        { id: 34, name: "Nidoking", win_percentage: 0 }, { id: 38, name: "Ninetales", win_percentage: 0 },
+        { id: 55, name: "Golduck", win_percentage: 0 }, { id: 62, name: "Poliwrath", win_percentage: 0 },
+        { id: 68, name: "Machamp", win_percentage: 0 }, { id: 73, name: "Tentacruel", win_percentage: 0 },
+        { id: 80, name: "Slowbro", win_percentage: 0 }, { id: 91, name: "Cloyster", win_percentage: 0 },
+        { id: 134, name: "Vaporeon", win_percentage: 0 }, { id: 135, name: "Jolteon", win_percentage: 0 },
+        { id: 141, name: "Kabutops", win_percentage: 0 }, { id: 143, name: "Snorlax", win_percentage: 0 },
+        { id: 160, name: "Feraligatr", win_percentage: 0 }, { id: 169, name: "Crobat", win_percentage: 0 },
+        { id: 178, name: "Xatu", win_percentage: 0 }, { id: 186, name: "Politoed", win_percentage: 0 },
+        { id: 195, name: "Quagsire", win_percentage: 0 }, { id: 197, name: "Umbreon", win_percentage: 0 },
+        { id: 205, name: "Forretress", win_percentage: 0 }, { id: 207, name: "Gligar", win_percentage: 0 },
+        { id: 214, name: "Heracross", win_percentage: 0 }, { id: 226, name: "Mantine", win_percentage: 0 },
+        { id: 232, name: "Donphan", win_percentage: 0 }, { id: 233, name: "Porygon2", win_percentage: 0 },
+        { id: 242, name: "Blissey", win_percentage: 0 }, { id: 244, name: "Entei", win_percentage: 0 },
+        { id: 302, name: "Sableye", win_percentage: 0 }, { id: 308, name: "Medicham", win_percentage: 0 },
+        { id: 324, name: "Torkoal", win_percentage: 0 }, { id: 330, name: "Flygon", win_percentage: 0 },
+        { id: 373, name: "Salamence", win_percentage: 0 }, { id: 407, name: "Roserade", win_percentage: 0 },
+        { id: 424, name: "Ambipom", win_percentage: 0 }, { id: 429, name: "Mismagius", win_percentage: 0 },
+        { id: 450, name: "Hippowdon", win_percentage: 0 }, { id: 464, name: "Rhyperior", win_percentage: 0 },
+        { id: 465, name: "Tangrowth", win_percentage: 0 }, { id: 468, name: "Togekiss", win_percentage: 0 },
+        { id: 469, name: "Yanmega", win_percentage: 0 }, { id: 474, name: "Porygon-Z", win_percentage: 0 },
+        { id: 479, name: "Rotom", win_percentage: 0 }, { id: 492, name: "Shaymin", win_percentage: 0 },
+        { id: 526, name: "Gigalith", win_percentage: 0 }, { id: 537, name: "Seismitoad", win_percentage: 0 },
+        { id: 545, name: "Scolipede", win_percentage: 0 }, { id: 553, name: "Krookodile", win_percentage: 0 },
+        { id: 561, name: "Sigilyph", win_percentage: 0 }, { id: 563, name: "Cofagrigus", win_percentage: 0 },
+        { id: 612, name: "Haxorus", win_percentage: 0 }, { id: 625, name: "Bisharp", win_percentage: 0 },
+        { id: 630, name: "Mandibuzz", win_percentage: 0 }
     ].sort((a, b) => a.id - b.id),
     
     nu: [
-        { id: 9, nombre: "Blastoise" }, { id: 25, nombre: "Pikachu" },
-        { id: 36, nombre: "Clefable" }, { id: 42, nombre: "Golbat" },
-        { id: 49, nombre: "Venomoth" }, { id: 59, nombre: "Arcanine" },
-        { id: 65, nombre: "Alakazam" }, { id: 76, nombre: "Golem" },
-        { id: 82, nombre: "Magneton" }, { id: 107, nombre: "Hitmonchan" },
-        { id: 114, nombre: "Tangela" }, { id: 146, nombre: "Moltres" },
-        { id: 157, nombre: "Typhlosion" }, { id: 171, nombre: "Lanturn" },
-        { id: 184, nombre: "Azumarill" }, { id: 208, nombre: "Steelix" },
-        { id: 211, nombre: "Qwilfish" }, { id: 221, nombre: "Piloswine" },
-        { id: 229, nombre: "Houndoom" }, { id: 237, nombre: "Hitmontop" },
-        { id: 254, nombre: "Sceptile" }, { id: 257, nombre: "Blaziken" },
-        { id: 260, nombre: "Swampert" }, { id: 291, nombre: "Ninjask" },
-        { id: 297, nombre: "Hariyama" }, { id: 319, nombre: "Sharpedo" },
-        { id: 334, nombre: "Altaria" }, { id: 350, nombre: "Milotic" },
-        { id: 356, nombre: "Dusclops" }, { id: 389, nombre: "Torterra" },
-        { id: 430, nombre: "Honchkrow" }, { id: 435, nombre: "Skuntank" },
-        { id: 436, nombre: "Bronzor" }, { id: 442, nombre: "Spiritomb" },
-        { id: 452, nombre: "Drapion" }, { id: 454, nombre: "Toxicroak" },
-        { id: 475, nombre: "Gallade" }, { id: 477, nombre: "Dusknoir" },
-        { id: 478, nombre: "Froslass" }, { id: 508, nombre: "Stoutland" },
-        { id: 531, nombre: "Audino" }, { id: 560, nombre: "Scrafty" },
-        { id: 571, nombre: "Zoroark" }, { id: 589, nombre: "Escavalier" },
-        { id: 604, nombre: "Eelektross" }, { id: 621, nombre: "Druddigon" },
-        { id: 628, nombre: "Braviary" }, { id: 632, nombre: "Durant" }
+        { id: 9, name: "Blastoise", win_percentage: 0 }, { id: 25, name: "Pikachu", win_percentage: 0 },
+        { id: 36, name: "Clefable", win_percentage: 0 }, { id: 42, name: "Golbat", win_percentage: 0 },
+        { id: 49, name: "Venomoth", win_percentage: 0 }, { id: 59, name: "Arcanine", win_percentage: 0 },
+        { id: 65, name: "Alakazam", win_percentage: 0 }, { id: 76, name: "Golem", win_percentage: 0 },
+        { id: 82, name: "Magneton", win_percentage: 0 }, { id: 107, name: "Hitmonchan", win_percentage: 0 },
+        { id: 114, name: "Tangela", win_percentage: 0 }, { id: 146, name: "Moltres", win_percentage: 0 },
+        { id: 157, name: "Typhlosion", win_percentage: 0 }, { id: 171, name: "Lanturn", win_percentage: 0 },
+        { id: 184, name: "Azumarill", win_percentage: 0 }, { id: 208, name: "Steelix", win_percentage: 0 },
+        { id: 211, name: "Qwilfish", win_percentage: 0 }, { id: 221, name: "Piloswine", win_percentage: 0 },
+        { id: 229, name: "Houndoom", win_percentage: 0 }, { id: 237, name: "Hitmontop", win_percentage: 0 },
+        { id: 254, name: "Sceptile", win_percentage: 0 }, { id: 257, name: "Blaziken", win_percentage: 0 },
+        { id: 260, name: "Swampert", win_percentage: 0 }, { id: 291, name: "Ninjask", win_percentage: 0 },
+        { id: 297, name: "Hariyama", win_percentage: 0 }, { id: 319, name: "Sharpedo", win_percentage: 0 },
+        { id: 334, name: "Altaria", win_percentage: 0 }, { id: 350, name: "Milotic", win_percentage: 0 },
+        { id: 356, name: "Dusclops", win_percentage: 0 }, { id: 389, name: "Torterra", win_percentage: 0 },
+        { id: 430, name: "Honchkrow", win_percentage: 0 }, { id: 435, name: "Skuntank", win_percentage: 0 },
+        { id: 436, name: "Bronzor", win_percentage: 0 }, { id: 442, name: "Spiritomb", win_percentage: 0 },
+        { id: 452, name: "Drapion", win_percentage: 0 }, { id: 454, name: "Toxicroak", win_percentage: 0 },
+        { id: 475, name: "Gallade", win_percentage: 0 }, { id: 477, name: "Dusknoir", win_percentage: 0 },
+        { id: 478, name: "Froslass", win_percentage: 0 }, { id: 508, name: "Stoutland", win_percentage: 0 },
+        { id: 531, name: "Audino", win_percentage: 0 }, { id: 560, name: "Scrafty", win_percentage: 0 },
+        { id: 571, name: "Zoroark", win_percentage: 0 }, { id: 589, name: "Escavalier", win_percentage: 0 },
+        { id: 604, name: "Eelektross", win_percentage: 0 }, { id: 621, name: "Druddigon", win_percentage: 0 },
+        { id: 628, name: "Braviary", win_percentage: 0 }, { id: 632, name: "Durant", win_percentage: 0 }
+    ].sort((a, b) => a.id - b.id),
+    
+    untiered: [
+        { id: 132, name: "Ditto", win_percentage: 0 },
+        { id: 201, name: "Unown", win_percentage: 0 },
+        { id: 327, name: "Spinda", win_percentage: 0 },
+        { id: 351, name: "Castform", win_percentage: 0 },
+        { id: 431, name: "Glameow", win_percentage: 0 },
+        { id: 511, name: "Pansage", win_percentage: 0 },
+        { id: 512, name: "Simisage", win_percentage: 0 },
+        { id: 513, name: "Pansear", win_percentage: 0 },
+        { id: 514, name: "Simisear", win_percentage: 0 },
+        { id: 515, name: "Panpour", win_percentage: 0 },
+        { id: 516, name: "Simipour", win_percentage: 0 }
     ].sort((a, b) => a.id - b.id)
 };
 
@@ -141,7 +165,7 @@ function handleTiers() {
             'Content-Type': 'application/json',
             ...corsHeaders
         }
-    });
+    }); 
 }
 
 function handleAllPokemon() {
@@ -184,10 +208,12 @@ function handleTierPokemon(tier) {
 function handleMetadata() {
     const counts = {
         count_total: Object.values(tiers).reduce((acc, curr) => acc + curr.length, 0),
+        count_ubers: tiers.ubers.length,
         count_ou: tiers.ou.length,
         count_uu: tiers.uu.length,
         count_nu: tiers.nu.length,
-        last_updated_date: "12/04/2025"
+        count_untiered: tiers.untiered.length,
+        last_updated_date: fechaActualizacion
     };
     
     return new Response(JSON.stringify({
