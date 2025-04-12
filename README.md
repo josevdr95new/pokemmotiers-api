@@ -30,6 +30,6 @@ http://127.0.0.1:8787/Endpoint
 | Endpoint               | Description                                  |
 |------------------------|----------------------------------------------|
 | `GET /tiers`           | List all available tiers with Pokémon counts |
-| `GET /pokemon`         | Get all Pokemon across all tiers             |
-| `GET /pokemon/{tier}`  | Get Pokemon for specific tier (ou, uu, nu)   |
+| `GET /pokemon`         | Get all Pokémon across all tiers             |
+| `GET /pokemon/{tier}`  | Get Pokémon for specific tier (ou, uu, nu)   |
 | `GET /metadata`        | Get API metadata and statistics              |
