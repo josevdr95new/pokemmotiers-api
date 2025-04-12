@@ -1,4 +1,5 @@
-const fechaActualizacion = "2025/04/12"; 
+const seasonNumber = 20;
+const lastUpdated = "2025/04/12";
 
 const tiers = {
     ubers: [
@@ -208,13 +209,19 @@ async function handleRequest(request) {
             return handleMetadata();
         }
         
-        return new Response('Endpoint no encontrado', { 
+        return new Response(JSON.stringify({ 
+            season: seasonNumber,
+            error: 'Endpoint not found' 
+        }), { 
             status: 404,
             headers: { 'Content-Type': 'application/json', ...corsHeaders }
         });
         
     } catch (error) {
-        return new Response(JSON.stringify({ error: error.message }), {
+        return new Response(JSON.stringify({ 
+            season: seasonNumber,
+            error: error.message 
+        }), {
             status: 500,
             headers: { 'Content-Type': 'application/json', ...corsHeaders }
         });
@@ -223,12 +230,14 @@ async function handleRequest(request) {
 
 function handleTiers() {
     const response = {
+        season: seasonNumber,
         tiers: Object.keys(tiers).map(tier => ({
             name: tier.toUpperCase(),
             count: tiers[tier].length
         })),
         total_pokemon: Object.values(tiers).reduce((acc, curr) => acc + curr.length, 0),
-        total_tiers: Object.keys(tiers).length
+        total_tiers: Object.keys(tiers).length,
+        last_updated: lastUpdated
     };
     
     return new Response(JSON.stringify(response), {
@@ -242,10 +251,11 @@ function handleTiers() {
 function handleAllPokemon() {
     const allPokemon = Object.entries(tiers).flatMap(([tier, data]) => 
         data.map(p => ({ ...p, tier: tier.toUpperCase() }))
-        .sort((a, b) => a.id - b.id)
     );
     
     return new Response(JSON.stringify({
+        season: seasonNumber,
+        last_updated: lastUpdated,
         count: allPokemon.length,
         results: allPokemon
     }), {
@@ -258,13 +268,18 @@ function handleAllPokemon() {
 
 function handleTierPokemon(tier) {
     if (!tiers[tier]) {
-        return new Response(JSON.stringify({ error: 'Tier no válido' }), {
+        return new Response(JSON.stringify({ 
+            season: seasonNumber,
+            error: 'Invalid tier' 
+        }), {
             status: 404,
             headers: { 'Content-Type': 'application/json', ...corsHeaders }
         });
     }
     
     return new Response(JSON.stringify({
+        season: seasonNumber,
+        last_updated: lastUpdated,
         count: tiers[tier].length,
         tier: tier.toUpperCase(),
         results: tiers[tier]
@@ -278,13 +293,14 @@ function handleTierPokemon(tier) {
 
 function handleMetadata() {
     const counts = {
+        season: seasonNumber,
+        last_updated: lastUpdated,
         count_total: Object.values(tiers).reduce((acc, curr) => acc + curr.length, 0),
         count_ubers: tiers.ubers.length,
         count_ou: tiers.ou.length,
         count_uu: tiers.uu.length,
         count_nu: tiers.nu.length,
-        count_untiered: tiers.untiered.length,
-        last_updated_date: fechaActualizacion
+        count_untiered: tiers.untiered.length
     };
     
     return new Response(JSON.stringify({
